@@ -1,0 +1,271 @@
+/**
+ * Version Switcher Styles
+ */
+
+/* Version Toggle Button */
+.version-switcher {
+  position: fixed;
+  top: 90px;
+  right: 20px;
+  z-index: 10001;
+}
+
+.version-toggle-btn {
+  min-width: 60px;
+  min-height: 48px;
+  padding: 8px 16px;
+  background: rgba(30, 30, 40, 0.95);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.version-toggle-btn:active {
+  transform: scale(0.95);
+}
+
+.version-icon {
+  font-size: 20px;
+}
+
+.version-label {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+/* Version Menu */
+.version-menu {
+  position: fixed;
+  top: 0;
+  right: -400px;
+  width: 100%;
+  max-width: 400px;
+  height: 100vh;
+  background: rgba(30, 30, 40, 0.98);
+  backdrop-filter: blur(20px);
+  box-shadow: -4px 0 32px rgba(0, 0, 0, 0.5);
+  transition: right 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+  overflow-y: auto;
+  z-index: 20001;
+}
+
+.version-menu.open {
+  right: 0;
+}
+
+.version-menu-header {
+  padding: 24px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.version-menu-header h3 {
+  margin: 0;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.version-close-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.version-close-btn:active {
+  transform: scale(0.95);
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Version Options */
+.version-options {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.version-option {
+  width: 100%;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: left;
+  position: relative;
+  overflow: hidden;
+}
+
+.version-option::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.version-option.active::before {
+  transform: scaleX(1);
+}
+
+.version-option:active {
+  transform: scale(0.98);
+}
+
+.version-option.active {
+  background: rgba(102, 126, 234, 0.2);
+  border-color: rgba(102, 126, 234, 0.5);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.version-option-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.version-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: bold;
+  color: white;
+}
+
+.version-badge.new {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  animation: pulse-badge 2s ease-in-out infinite;
+}
+
+@keyframes pulse-badge {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(102, 126, 234, 0.7);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(102, 126, 234, 0);
+  }
+}
+
+.version-name {
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+}
+
+.version-description {
+  margin: 0 0 12px 0;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.version-features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.version-feature {
+  display: inline-block;
+  padding: 4px 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.version-info {
+  padding: 20px;
+  color: rgba(255, 255, 255, 0.5);
+  text-align: center;
+  font-size: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Version Notification */
+.version-notification {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%) translateY(-100px);
+  padding: 16px 24px;
+  background: rgba(30, 30, 40, 0.98);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(102, 126, 234, 0.5);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  z-index: 20002;
+  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+.version-notification.show {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
+
+.version-notification-icon {
+  font-size: 24px;
+}
+
+.version-notification-text {
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+/* Mobile adjustments */
+@media (max-width: 480px) {
+  .version-menu {
+    max-width: 100%;
+  }
+  
+  .version-toggle-btn {
+    min-width: 48px;
+    padding: 8px 12px;
+  }
+  
+  .version-label {
+    font-size: 12px;
+  }
+}
+
+/* V1/V2 Specific Styles */
+.version-v1 .v2-only {
+  display: none !important;
+}
+
+.version-v2 .v1-only {
+  display: none !important;
+}

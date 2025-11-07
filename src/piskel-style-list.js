@@ -42,5 +42,7 @@
   "css/widgets-size-picker.css",
   "css/widgets-tabs.css",
   "css/widgets-wizard.css",
-  "css/mobile-touch.css"
+  "css/mobile-touch.css",
+  "css/version-switcher.css",
+  "css/mobile-v2.css"
 ];

@@ -9,9 +9,18 @@ Piskel
 
 **This branch contains a mobile-first, touch-optimized fork designed for MIFF and modular game platforms.**
 
+### ✨ Now with V2 Enhanced Edition!
+
+**Two versions available on the same platform:**
+- **V1 Classic** - Clean, minimal interface for experienced users
+- **V2 Enhanced** - Interactive tutorial, quick actions, animation preview, color presets, and more!
+
+**Switch between versions instantly** with the ⚙️ button - compare and choose your favorite!
+
 ### Quick Links
 - 📱 **[Mobile Edition Documentation](./MOBILE_README.md)** - Complete feature guide
-- 🚀 **[Quick Start Guide](./QUICKSTART_MOBILE.md)** - Get started in 5 minutes  
+- 🚀 **[Quick Start Guide](./QUICKSTART_MOBILE.md)** - Get started in 5 minutes
+- ✨ **[V2 Features Guide](./V2_FEATURES.md)** - What's new in V2!
 - 📦 **[Implementation Summary](./IMPLEMENTATION_SUMMARY.md)** - Technical details
 - 🎮 **[Game Engine Examples](./examples/)** - Integration examples
 - 🚀 **[Deployment Guide](./DEPLOYMENT.md)** - How to deploy
@@ -21,9 +30,15 @@ Piskel
 📥 **Auto-chop** sprite sheets with smart detection  
 🏷️ **Animation tagging** for game engines  
 💾 **MIFF-compatible export** with JSON metadata  
-🎯 **Modular workflow:** Draw → Import → Tag → Export
+🎯 **Modular workflow:** Draw → Import → Tag → Export  
+⚙️ **Version switcher** - Compare V1 vs V2 anytime
 
-**[Learn more about the Mobile Edition →](./MOBILE_README.md)**
+### V2 Exclusive Features
+🎓 **Interactive tutorial** • ⚡ **Quick actions menu** • 🎬 **Animation preview**  
+🎨 **Color presets** • 👁️ **Export preview** • ✨ **Enhanced gestures**
+
+**[Learn more about the Mobile Edition →](./MOBILE_README.md)**  
+**[See what's new in V2 →](./V2_FEATURES.md)**
 
 ---
 

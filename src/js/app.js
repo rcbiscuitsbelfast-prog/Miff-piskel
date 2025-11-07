@@ -176,6 +176,11 @@
       this.mobileController.init();
 
       if (this.mobileController.isMobile()) {
+        // Version switcher
+        this.versionSwitcherController = new pskl.controller.VersionSwitcherController();
+        this.versionSwitcherController.init();
+        
+        // V1 controllers (always loaded)
         this.touchGestureService = new pskl.service.TouchGestureService(this.piskelController);
         this.touchGestureService.init();
 
@@ -193,6 +198,27 @@
 
         this.miffExportService = new pskl.service.MIFFExportService(this.piskelController);
         this.miffExportService.init();
+        
+        // V2 enhanced controllers
+        if (pskl.controller.v2) {
+          this.onboardingController = new pskl.controller.v2.OnboardingController();
+          this.onboardingController.init();
+          
+          this.quickActionsController = new pskl.controller.v2.QuickActionsController(this.piskelController);
+          this.quickActionsController.init();
+          
+          this.enhancedGestureController = new pskl.controller.v2.EnhancedGestureController(this.piskelController);
+          this.enhancedGestureController.init();
+          
+          this.animationPreviewController = new pskl.controller.v2.AnimationPreviewController();
+          this.animationPreviewController.init();
+          
+          this.colorPaletteController = new pskl.controller.v2.ColorPaletteController();
+          this.colorPaletteController.init();
+          
+          this.exportPreviewController = new pskl.controller.v2.ExportPreviewController(this.piskelController);
+          this.exportPreviewController.init();
+        }
       }
 
       this.drawingLoop = new pskl.rendering.DrawingLoop();
