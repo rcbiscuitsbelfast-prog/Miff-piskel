@@ -219,6 +219,24 @@
           this.exportPreviewController = new pskl.controller.v2.ExportPreviewController(this.piskelController);
           this.exportPreviewController.init();
         }
+        
+        // V3 professional controllers
+        if (pskl.controller.v3) {
+          this.advancedLayerController = new pskl.controller.v3.AdvancedLayerController(this.piskelController);
+          this.advancedLayerController.init();
+          
+          this.onionSkinController = new pskl.controller.v3.OnionSkinController(this.piskelController);
+          this.onionSkinController.init();
+          
+          this.symmetryToolController = new pskl.controller.v3.SymmetryToolController(this.piskelController);
+          this.symmetryToolController.init();
+          
+          this.projectTemplateController = new pskl.controller.v3.ProjectTemplateController(this.piskelController);
+          this.projectTemplateController.init();
+          
+          this.advancedExportController = new pskl.controller.v3.AdvancedExportController(this.piskelController);
+          this.advancedExportController.init();
+        }
       }
 
       this.drawingLoop = new pskl.rendering.DrawingLoop();

@@ -280,6 +280,13 @@
   "js/controller/v2/AnimationPreviewController.js",
   "js/controller/v2/ColorPaletteController.js",
   "js/controller/v2/ExportPreviewController.js",
+  
+  // V3 professional controllers
+  "js/controller/v3/AdvancedLayerController.js",
+  "js/controller/v3/OnionSkinController.js",
+  "js/controller/v3/SymmetryToolController.js",
+  "js/controller/v3/ProjectTemplateController.js",
+  "js/controller/v3/AdvancedExportController.js",
 
   // Application controller and initialization
   "js/app.js",

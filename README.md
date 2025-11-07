@@ -9,36 +9,54 @@ Piskel
 
 **This branch contains a mobile-first, touch-optimized fork designed for MIFF and modular game platforms.**
 
-### ✨ Now with V2 Enhanced Edition!
+### ✨ Now with V3 Professional Edition!
 
-**Two versions available on the same platform:**
+**Three complete versions on one platform:**
 - **V1 Classic** - Clean, minimal interface for experienced users
-- **V2 Enhanced** - Interactive tutorial, quick actions, animation preview, color presets, and more!
+- **V2 Enhanced** - Interactive tutorial, quick actions, animation preview, color presets
+- **V3 Professional** - All V2 features PLUS advanced layers, onion skinning, symmetry tools, templates!
 
-**Switch between versions instantly** with the ⚙️ button - compare and choose your favorite!
+**Switch between versions instantly** with the ⚙️ button - choose the experience that fits you!
 
-### Quick Links
+### 🚀 Quick Links
 - 📱 **[Mobile Edition Documentation](./MOBILE_README.md)** - Complete feature guide
 - 🚀 **[Quick Start Guide](./QUICKSTART_MOBILE.md)** - Get started in 5 minutes
-- ✨ **[V2 Features Guide](./V2_FEATURES.md)** - What's new in V2!
-- 📦 **[Implementation Summary](./IMPLEMENTATION_SUMMARY.md)** - Technical details
+- ✨ **[V3 Features Guide](./V3_FEATURES.md)** - What's new in V3 Professional!
+- 📊 **[V1 vs V2 vs V3 Comparison](./V1_VS_V2_COMPARISON.md)** - Choose your version
+- 📦 **[GitHub Pages Setup](./GITHUB_PAGES_SETUP.md)** - Deploy to web instantly
 - 🎮 **[Game Engine Examples](./examples/)** - Integration examples
-- 🚀 **[Deployment Guide](./DEPLOYMENT.md)** - How to deploy
 
-### Key Features
+### 🌟 Key Features (All Versions)
 ✨ **Touch-optimized UI** with gesture support  
 📥 **Auto-chop** sprite sheets with smart detection  
 🏷️ **Animation tagging** for game engines  
 💾 **MIFF-compatible export** with JSON metadata  
 🎯 **Modular workflow:** Draw → Import → Tag → Export  
-⚙️ **Version switcher** - Compare V1 vs V2 anytime
+⚙️ **Version switcher** - Compare versions anytime
 
-### V2 Exclusive Features
-🎓 **Interactive tutorial** • ⚡ **Quick actions menu** • 🎬 **Animation preview**  
-🎨 **Color presets** • 👁️ **Export preview** • ✨ **Enhanced gestures**
+### 🎨 V3 Professional Features
+🎨 **Advanced Layers** - Blend modes & opacity control  
+🧅 **Onion Skinning** - Smooth animation workflow  
+↔️ **Symmetry Tools** - Horizontal, vertical, radial symmetry  
+📑 **Project Templates** - Quick starts for any project type  
+💎 **Export Formats** - APNG, WebP, enhanced JSON  
+⚡ **Performance** - Optimized for complex projects  
 
-**[Learn more about the Mobile Edition →](./MOBILE_README.md)**  
-**[See what's new in V2 →](./V2_FEATURES.md)**
+### 🎯 Quick Comparison
+
+| Feature | V1 | V2 | V3 |
+|---------|----|----|-----|
+| Core Drawing | ✅ | ✅ | ✅ |
+| Tutorial | ❌ | ✅ | ✅ |
+| Quick Actions | ❌ | ✅ | ✅ |
+| Color Presets | ❌ | ✅ | ✅ |
+| **Advanced Layers** | ❌ | ❌ | ✅ |
+| **Onion Skinning** | ❌ | ❌ | ✅ |
+| **Symmetry Tools** | ❌ | ❌ | ✅ |
+| **Templates** | ❌ | ❌ | ✅ |
+
+**[Learn more about V3 Professional →](./V3_FEATURES.md)**  
+**[Deploy to GitHub Pages →](./GITHUB_PAGES_SETUP.md)**
 
 ---
 

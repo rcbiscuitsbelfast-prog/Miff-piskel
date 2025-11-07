@@ -44,5 +44,6 @@
   "css/widgets-wizard.css",
   "css/mobile-touch.css",
   "css/version-switcher.css",
-  "css/mobile-v2.css"
+  "css/mobile-v2.css",
+  "css/mobile-v3.css"
 ];

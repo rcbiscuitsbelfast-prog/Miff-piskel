@@ -8,7 +8,7 @@
    * Version Switcher Controller - Switch between V1 and V2 mobile interfaces
    */
   ns.VersionSwitcherController = function () {
-    this.currentVersion = this.getStoredVersion() || 'v2'; // Default to V2
+    this.currentVersion = this.getStoredVersion() || 'v3'; // Default to V3
   };
 
   ns.VersionSwitcherController.prototype.init = function () {
@@ -22,7 +22,7 @@
     switcher.innerHTML = `
       <button class="version-toggle-btn" id="version-toggle-btn" title="Switch Version">
         <span class="version-icon">⚙️</span>
-        <span class="version-label">V${this.currentVersion === 'v1' ? '1' : '2'}</span>
+        <span class="version-label">V${this.currentVersion === 'v1' ? '1' : this.currentVersion === 'v2' ? '2' : '3'}</span>
       </button>
       <div class="version-menu" id="version-menu">
         <div class="version-menu-header">
@@ -39,7 +39,7 @@
           </button>
           <button class="version-option ${this.currentVersion === 'v2' ? 'active' : ''}" data-version="v2">
             <div class="version-option-header">
-              <span class="version-badge new">V2</span>
+              <span class="version-badge">V2</span>
               <span class="version-name">Enhanced</span>
             </div>
             <p class="version-description">Improved UI, onboarding, quick actions, and more!</p>
@@ -47,7 +47,21 @@
               <span class="version-feature">✨ Tutorial</span>
               <span class="version-feature">⚡ Quick Actions</span>
               <span class="version-feature">🎬 Animation Preview</span>
-              <span class="version-feature">🎨 Better Colors</span>
+              <span class="version-feature">🎨 Color Presets</span>
+            </div>
+          </button>
+          <button class="version-option ${this.currentVersion === 'v3' ? 'active' : ''}" data-version="v3">
+            <div class="version-option-header">
+              <span class="version-badge new">V3</span>
+              <span class="version-name">Professional</span>
+            </div>
+            <p class="version-description">All V2 features plus advanced professional tools!</p>
+            <div class="version-features">
+              <span class="version-feature">🎨 Advanced Layers</span>
+              <span class="version-feature">🧅 Onion Skinning</span>
+              <span class="version-feature">↔️ Symmetry Tools</span>
+              <span class="version-feature">📑 Templates</span>
+              <span class="version-feature">💎 Export Formats</span>
             </div>
           </button>
         </div>
@@ -90,7 +104,7 @@
     // Update UI
     var label = document.querySelector('.version-label');
     if (label) {
-      label.textContent = 'V' + (version === 'v1' ? '1' : '2');
+      label.textContent = 'V' + (version === 'v1' ? '1' : version === 'v2' ? '2' : '3');
     }
     
     // Update active state
@@ -103,7 +117,7 @@
   };
 
   ns.VersionSwitcherController.prototype.applyVersion = function (version) {
-    document.body.classList.remove('version-v1', 'version-v2');
+    document.body.classList.remove('version-v1', 'version-v2', 'version-v3');
     document.body.classList.add('version-' + version);
     
     // Publish event for other controllers to react
@@ -125,9 +139,10 @@
   ns.VersionSwitcherController.prototype.showVersionNotification = function (version) {
     var notification = document.createElement('div');
     notification.className = 'version-notification';
+    var versionName = version === 'v1' ? 'V1 Classic' : version === 'v2' ? 'V2 Enhanced' : 'V3 Professional';
     notification.innerHTML = `
       <span class="version-notification-icon">✨</span>
-      <span class="version-notification-text">Switched to ${version === 'v1' ? 'V1 Classic' : 'V2 Enhanced'}</span>
+      <span class="version-notification-text">Switched to ${versionName}</span>
     `;
     
     document.body.appendChild(notification);

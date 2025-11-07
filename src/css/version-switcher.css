@@ -261,11 +261,17 @@
   }
 }
 
-/* V1/V2 Specific Styles */
-.version-v1 .v2-only {
+/* Version Specific Styles */
+.version-v1 .v2-only,
+.version-v1 .v3-only {
   display: none !important;
 }
 
-.version-v2 .v1-only {
+.version-v2 .v1-only,
+.version-v2 .v3-only {
+  display: none !important;
+}
+
+.version-v3 .v1-only {
   display: none !important;
 }
