@@ -171,6 +171,74 @@
       this.clipboardService = new pskl.service.ClipboardService(this.piskelController);
       this.clipboardService.init();
 
+      // Mobile and MIFF-specific controllers
+      this.mobileController = new pskl.controller.MobileController(this.piskelController);
+      this.mobileController.init();
+
+      if (this.mobileController.isMobile()) {
+        // Version switcher
+        this.versionSwitcherController = new pskl.controller.VersionSwitcherController();
+        this.versionSwitcherController.init();
+        
+        // V1 controllers (always loaded)
+        this.touchGestureService = new pskl.service.TouchGestureService(this.piskelController);
+        this.touchGestureService.init();
+
+        this.toolDrawerController = new pskl.controller.ToolDrawerController();
+        this.toolDrawerController.init();
+
+        this.autoChopService = new pskl.service.AutoChopService(this.piskelController);
+        this.autoChopService.init();
+
+        this.assetTrayController = new pskl.controller.AssetTrayController(this.piskelController);
+        this.assetTrayController.init();
+
+        this.taggingController = new pskl.controller.TaggingController(this.piskelController);
+        this.taggingController.init();
+
+        this.miffExportService = new pskl.service.MIFFExportService(this.piskelController);
+        this.miffExportService.init();
+        
+        // V2 enhanced controllers
+        if (pskl.controller.v2) {
+          this.onboardingController = new pskl.controller.v2.OnboardingController();
+          this.onboardingController.init();
+          
+          this.quickActionsController = new pskl.controller.v2.QuickActionsController(this.piskelController);
+          this.quickActionsController.init();
+          
+          this.enhancedGestureController = new pskl.controller.v2.EnhancedGestureController(this.piskelController);
+          this.enhancedGestureController.init();
+          
+          this.animationPreviewController = new pskl.controller.v2.AnimationPreviewController();
+          this.animationPreviewController.init();
+          
+          this.colorPaletteController = new pskl.controller.v2.ColorPaletteController();
+          this.colorPaletteController.init();
+          
+          this.exportPreviewController = new pskl.controller.v2.ExportPreviewController(this.piskelController);
+          this.exportPreviewController.init();
+        }
+        
+        // V3 professional controllers
+        if (pskl.controller.v3) {
+          this.advancedLayerController = new pskl.controller.v3.AdvancedLayerController(this.piskelController);
+          this.advancedLayerController.init();
+          
+          this.onionSkinController = new pskl.controller.v3.OnionSkinController(this.piskelController);
+          this.onionSkinController.init();
+          
+          this.symmetryToolController = new pskl.controller.v3.SymmetryToolController(this.piskelController);
+          this.symmetryToolController.init();
+          
+          this.projectTemplateController = new pskl.controller.v3.ProjectTemplateController(this.piskelController);
+          this.projectTemplateController.init();
+          
+          this.advancedExportController = new pskl.controller.v3.AdvancedExportController(this.piskelController);
+          this.advancedExportController.init();
+        }
+      }
+
       this.drawingLoop = new pskl.rendering.DrawingLoop();
       this.drawingLoop.addCallback(this.render, this);
       this.drawingLoop.start();

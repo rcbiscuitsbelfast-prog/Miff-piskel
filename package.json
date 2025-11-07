@@ -25,6 +25,7 @@
     "dev": "grunt play",
     "prod": "grunt serve",
     "prod:test": "grunt serve-test",
+    "build": "grunt build",
     "format": "grunt eslint --fix",
     "preversion": "grunt test build",
     "postversion": "git push && git push --tags && npm publish",

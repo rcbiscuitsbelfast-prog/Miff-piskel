@@ -263,6 +263,31 @@
   "js/worker/imageprocessor/ImageProcessorWorker.js",
   "js/worker/imageprocessor/ImageProcessor.js",
 
+  // Mobile and MIFF-specific controllers
+  "js/controller/MobileController.js",
+  "js/controller/VersionSwitcherController.js",
+  "js/controller/ToolDrawerController.js",
+  "js/controller/AssetTrayController.js",
+  "js/controller/TaggingController.js",
+  "js/service/TouchGestureService.js",
+  "js/service/AutoChopService.js",
+  "js/service/MIFFExportService.js",
+  
+  // V2 enhanced controllers
+  "js/controller/v2/OnboardingController.js",
+  "js/controller/v2/QuickActionsController.js",
+  "js/controller/v2/EnhancedGestureController.js",
+  "js/controller/v2/AnimationPreviewController.js",
+  "js/controller/v2/ColorPaletteController.js",
+  "js/controller/v2/ExportPreviewController.js",
+  
+  // V3 professional controllers
+  "js/controller/v3/AdvancedLayerController.js",
+  "js/controller/v3/OnionSkinController.js",
+  "js/controller/v3/SymmetryToolController.js",
+  "js/controller/v3/ProjectTemplateController.js",
+  "js/controller/v3/AdvancedExportController.js",
+
   // Application controller and initialization
   "js/app.js",
 

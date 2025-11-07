@@ -3,6 +3,65 @@ Piskel
 
 [![E2E Tests](https://github.com/piskelapp/piskel/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/piskelapp/piskel/actions/workflows/ci.yml)
 
+---
+
+## 🎮🎨 Mobile Edition - MIFF Fork
+
+**This branch contains a mobile-first, touch-optimized fork designed for MIFF and modular game platforms.**
+
+### ✨ Now with V3 Professional Edition!
+
+**Three complete versions on one platform:**
+- **V1 Classic** - Clean, minimal interface for experienced users
+- **V2 Enhanced** - Interactive tutorial, quick actions, animation preview, color presets
+- **V3 Professional** - All V2 features PLUS advanced layers, onion skinning, symmetry tools, templates!
+
+**Switch between versions instantly** with the ⚙️ button - choose the experience that fits you!
+
+### 🚀 Quick Links
+- 📱 **[Mobile Edition Documentation](./MOBILE_README.md)** - Complete feature guide
+- 🚀 **[Quick Start Guide](./QUICKSTART_MOBILE.md)** - Get started in 5 minutes
+- ✨ **[V3 Features Guide](./V3_FEATURES.md)** - What's new in V3 Professional!
+- 📊 **[V1 vs V2 vs V3 Comparison](./V1_VS_V2_COMPARISON.md)** - Choose your version
+- 📦 **[GitHub Pages Setup](./GITHUB_PAGES_SETUP.md)** - Deploy to web instantly
+- 🎮 **[Game Engine Examples](./examples/)** - Integration examples
+
+### 🌟 Key Features (All Versions)
+✨ **Touch-optimized UI** with gesture support  
+📥 **Auto-chop** sprite sheets with smart detection  
+🏷️ **Animation tagging** for game engines  
+💾 **MIFF-compatible export** with JSON metadata  
+🎯 **Modular workflow:** Draw → Import → Tag → Export  
+⚙️ **Version switcher** - Compare versions anytime
+
+### 🎨 V3 Professional Features
+🎨 **Advanced Layers** - Blend modes & opacity control  
+🧅 **Onion Skinning** - Smooth animation workflow  
+↔️ **Symmetry Tools** - Horizontal, vertical, radial symmetry  
+📑 **Project Templates** - Quick starts for any project type  
+💎 **Export Formats** - APNG, WebP, enhanced JSON  
+⚡ **Performance** - Optimized for complex projects  
+
+### 🎯 Quick Comparison
+
+| Feature | V1 | V2 | V3 |
+|---------|----|----|-----|
+| Core Drawing | ✅ | ✅ | ✅ |
+| Tutorial | ❌ | ✅ | ✅ |
+| Quick Actions | ❌ | ✅ | ✅ |
+| Color Presets | ❌ | ✅ | ✅ |
+| **Advanced Layers** | ❌ | ❌ | ✅ |
+| **Onion Skinning** | ❌ | ❌ | ✅ |
+| **Symmetry Tools** | ❌ | ❌ | ✅ |
+| **Templates** | ❌ | ❌ | ✅ |
+
+**[Learn more about V3 Professional →](./V3_FEATURES.md)**  
+**[Deploy to GitHub Pages →](./GITHUB_PAGES_SETUP.md)**
+
+---
+
+## Original Piskel Documentation
+
 Piskel is an easy-to-use sprite editor. It can be used to create game sprites, animations, pixel-art...
 It is the editor used in **[piskelapp.com](https://www.piskelapp.com)**.
 
