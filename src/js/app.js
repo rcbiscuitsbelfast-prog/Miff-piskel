@@ -171,6 +171,30 @@
       this.clipboardService = new pskl.service.ClipboardService(this.piskelController);
       this.clipboardService.init();
 
+      // Mobile and MIFF-specific controllers
+      this.mobileController = new pskl.controller.MobileController(this.piskelController);
+      this.mobileController.init();
+
+      if (this.mobileController.isMobile()) {
+        this.touchGestureService = new pskl.service.TouchGestureService(this.piskelController);
+        this.touchGestureService.init();
+
+        this.toolDrawerController = new pskl.controller.ToolDrawerController();
+        this.toolDrawerController.init();
+
+        this.autoChopService = new pskl.service.AutoChopService(this.piskelController);
+        this.autoChopService.init();
+
+        this.assetTrayController = new pskl.controller.AssetTrayController(this.piskelController);
+        this.assetTrayController.init();
+
+        this.taggingController = new pskl.controller.TaggingController(this.piskelController);
+        this.taggingController.init();
+
+        this.miffExportService = new pskl.service.MIFFExportService(this.piskelController);
+        this.miffExportService.init();
+      }
+
       this.drawingLoop = new pskl.rendering.DrawingLoop();
       this.drawingLoop.addCallback(this.render, this);
       this.drawingLoop.start();

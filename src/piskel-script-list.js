@@ -263,6 +263,15 @@
   "js/worker/imageprocessor/ImageProcessorWorker.js",
   "js/worker/imageprocessor/ImageProcessor.js",
 
+  // Mobile and MIFF-specific controllers
+  "js/controller/MobileController.js",
+  "js/controller/ToolDrawerController.js",
+  "js/controller/AssetTrayController.js",
+  "js/controller/TaggingController.js",
+  "js/service/TouchGestureService.js",
+  "js/service/AutoChopService.js",
+  "js/service/MIFFExportService.js",
+
   // Application controller and initialization
   "js/app.js",
 

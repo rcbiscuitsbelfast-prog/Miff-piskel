@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Piskel Mobile Edition - JavaScript Integration Example</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            background: #1e1e28;
+            color: white;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        canvas {
+            border: 2px solid #667eea;
+            background: #2d2d44;
+            image-rendering: pixelated;
+            image-rendering: crisp-edges;
+        }
+        
+        .controls {
+            margin-top: 20px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        button {
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        button:hover {
+            opacity: 0.9;
+        }
+        
+        .info {
+            margin-top: 20px;
+            padding: 16px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎮 Piskel Mobile Edition - JS Integration</h1>
+        <p>Example of loading and playing sprite animations exported from Piskel Mobile Edition</p>
+        
+        <canvas id="canvas" width="640" height="480"></canvas>
+        
+        <div class="controls">
+            <button id="play-idle">Idle</button>
+            <button id="play-walk">Walk</button>
+            <button id="play-attack">Attack</button>
+            <button id="load-sprite">Load Example Sprite</button>
+        </div>
+        
+        <div class="info" id="info">
+            <strong>Instructions:</strong><br>
+            1. Click "Load Example Sprite" to load a sprite<br>
+            2. Use animation buttons to switch animations<br>
+            3. Replace paths with your own exported sprites
+        </div>
+    </div>
+
+    <script>
+        class PiskelSprite {
+            constructor(canvas) {
+                this.canvas = canvas;
+                this.ctx = canvas.getContext('2d');
+                this.metadata = null;
+                this.spriteSheet = null;
+                this.currentAnimation = null;
+                this.currentFrame = 0;
+                this.frameTimer = 0;
+                this.x = 320;
+                this.y = 240;
+                this.scale = 4;
+            }
+
+            async load(basePath) {
+                // Load metadata JSON
+                const response = await fetch(basePath + 'metadata.json');
+                this.metadata = await response.json();
+                
+                // Load sprite sheet
+                this.spriteSheet = new Image();
+                await new Promise((resolve, reject) => {
+                    this.spriteSheet.onload = resolve;
+                    this.spriteSheet.onerror = reject;
+                    this.spriteSheet.src = basePath + 'spritesheet.png';
+                });
+                
+                // Set default animation
+                if (this.metadata.animations.length > 0) {
+                    this.playAnimation(this.metadata.animations[0].name);
+                }
+                
+                console.log('Loaded sprite:', this.metadata.name);
+                this.updateInfo();
+            }
+
+            playAnimation(animName) {
+                const anim = this.metadata.animations.find(a => a.name === animName);
+                if (!anim) {
+                    console.error('Animation not found:', animName);
+                    return;
+                }
+                
+                this.currentAnimation = anim;
+                this.currentFrame = anim.frameStart;
+                this.frameTimer = 0;
+                
+                console.log(`Playing: ${animName} (${anim.frameCount} frames @ ${anim.fps}fps)`);
+            }
+
+            update(deltaTime) {
+                if (!this.currentAnimation) return;
+                
+                // Update frame timer
+                const frameDuration = 1000 / this.currentAnimation.fps;
+                this.frameTimer += deltaTime;
+                
+                if (this.frameTimer >= frameDuration) {
+                    this.frameTimer = 0;
+                    this.currentFrame++;
+                    
+                    // Loop animation
+                    if (this.currentFrame > this.currentAnimation.frameEnd) {
+                        this.currentFrame = this.currentAnimation.frameStart;
+                    }
+                }
+            }
+
+            draw() {
+                if (!this.spriteSheet || !this.currentAnimation) return;
+                
+                // Clear canvas
+                this.ctx.fillStyle = '#2d2d44';
+                this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+                
+                // Calculate source position in sprite sheet
+                const frameWidth = this.metadata.sprite.width;
+                const frameHeight = this.metadata.sprite.height;
+                const framesPerRow = this.spriteSheet.width / frameWidth;
+                
+                const row = Math.floor(this.currentFrame / framesPerRow);
+                const col = this.currentFrame % framesPerRow;
+                
+                const srcX = col * frameWidth;
+                const srcY = row * frameHeight;
+                
+                // Draw frame
+                this.ctx.imageSmoothingEnabled = false;
+                this.ctx.drawImage(
+                    this.spriteSheet,
+                    srcX, srcY,
+                    frameWidth, frameHeight,
+                    this.x - (frameWidth * this.scale) / 2,
+                    this.y - (frameHeight * this.scale) / 2,
+                    frameWidth * this.scale,
+                    frameHeight * this.scale
+                );
+                
+                // Draw info
+                this.ctx.fillStyle = 'white';
+                this.ctx.font = '16px monospace';
+                this.ctx.fillText(
+                    `${this.currentAnimation.name} [${this.currentFrame}]`,
+                    10, 20
+                );
+            }
+
+            updateInfo() {
+                const info = document.getElementById('info');
+                info.innerHTML = `
+                    <strong>Loaded:</strong> ${this.metadata.name}<br>
+                    <strong>Size:</strong> ${this.metadata.sprite.width}x${this.metadata.sprite.height}<br>
+                    <strong>Frames:</strong> ${this.metadata.sprite.frameCount}<br>
+                    <strong>Animations:</strong> ${this.metadata.animations.map(a => a.name).join(', ')}
+                `;
+            }
+
+            getAnimationsByTag(tag) {
+                return this.metadata.animations.filter(anim => 
+                    anim.tags.includes(tag)
+                );
+            }
+        }
+
+        // Initialize
+        const canvas = document.getElementById('canvas');
+        const sprite = new PiskelSprite(canvas);
+
+        // Animation loop
+        let lastTime = 0;
+        function gameLoop(currentTime) {
+            const deltaTime = currentTime - lastTime;
+            lastTime = currentTime;
+            
+            sprite.update(deltaTime);
+            sprite.draw();
+            
+            requestAnimationFrame(gameLoop);
+        }
+
+        // Event listeners
+        document.getElementById('load-sprite').addEventListener('click', async () => {
+            try {
+                // Replace with your sprite path
+                // For this example, we'll create mock data
+                await loadExampleSprite();
+                requestAnimationFrame(gameLoop);
+            } catch (error) {
+                console.error('Failed to load sprite:', error);
+                alert('Failed to load sprite. Make sure the files exist at the specified path.');
+            }
+        });
+
+        document.getElementById('play-idle').addEventListener('click', () => {
+            sprite.playAnimation('idle');
+        });
+
+        document.getElementById('play-walk').addEventListener('click', () => {
+            sprite.playAnimation('walk');
+        });
+
+        document.getElementById('play-attack').addEventListener('click', () => {
+            sprite.playAnimation('attack');
+        });
+
+        // Mock example sprite loader
+        async function loadExampleSprite() {
+            // This is a mock - replace with real sprite path
+            // await sprite.load('/path/to/your/sprite/');
+            
+            // For demo, create a simple colored square sprite
+            const mockCanvas = document.createElement('canvas');
+            mockCanvas.width = 128;
+            mockCanvas.height = 32;
+            const mockCtx = mockCanvas.getContext('2d');
+            
+            // Draw 4 simple frames
+            for (let i = 0; i < 4; i++) {
+                mockCtx.fillStyle = `hsl(${i * 90}, 70%, 50%)`;
+                mockCtx.fillRect(i * 32, 0, 32, 32);
+            }
+            
+            sprite.spriteSheet = new Image();
+            sprite.spriteSheet.src = mockCanvas.toDataURL();
+            
+            sprite.metadata = {
+                name: "example-sprite",
+                sprite: {
+                    width: 32,
+                    height: 32,
+                    frameCount: 4
+                },
+                animations: [
+                    {
+                        name: "idle",
+                        frameStart: 0,
+                        frameEnd: 1,
+                        frameCount: 2,
+                        fps: 4,
+                        tags: ["character"]
+                    },
+                    {
+                        name: "walk",
+                        frameStart: 0,
+                        frameEnd: 3,
+                        frameCount: 4,
+                        fps: 8,
+                        tags: ["character", "movement"]
+                    },
+                    {
+                        name: "attack",
+                        frameStart: 2,
+                        frameEnd: 3,
+                        frameCount: 2,
+                        fps: 12,
+                        tags: ["character", "action"]
+                    }
+                ]
+            };
+            
+            sprite.playAnimation('idle');
+            sprite.updateInfo();
+            
+            console.log('Loaded example sprite');
+        }
+    </script>
+</body>
+</html>

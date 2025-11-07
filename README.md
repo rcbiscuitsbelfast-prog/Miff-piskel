@@ -3,6 +3,32 @@ Piskel
 
 [![E2E Tests](https://github.com/piskelapp/piskel/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/piskelapp/piskel/actions/workflows/ci.yml)
 
+---
+
+## 🎮🎨 Mobile Edition - MIFF Fork
+
+**This branch contains a mobile-first, touch-optimized fork designed for MIFF and modular game platforms.**
+
+### Quick Links
+- 📱 **[Mobile Edition Documentation](./MOBILE_README.md)** - Complete feature guide
+- 🚀 **[Quick Start Guide](./QUICKSTART_MOBILE.md)** - Get started in 5 minutes  
+- 📦 **[Implementation Summary](./IMPLEMENTATION_SUMMARY.md)** - Technical details
+- 🎮 **[Game Engine Examples](./examples/)** - Integration examples
+- 🚀 **[Deployment Guide](./DEPLOYMENT.md)** - How to deploy
+
+### Key Features
+✨ **Touch-optimized UI** with gesture support  
+📥 **Auto-chop** sprite sheets with smart detection  
+🏷️ **Animation tagging** for game engines  
+💾 **MIFF-compatible export** with JSON metadata  
+🎯 **Modular workflow:** Draw → Import → Tag → Export
+
+**[Learn more about the Mobile Edition →](./MOBILE_README.md)**
+
+---
+
+## Original Piskel Documentation
+
 Piskel is an easy-to-use sprite editor. It can be used to create game sprites, animations, pixel-art...
 It is the editor used in **[piskelapp.com](https://www.piskelapp.com)**.
 
