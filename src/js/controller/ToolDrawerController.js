@@ -27,6 +27,7 @@
     drawer.innerHTML = `
       <div class="tool-drawer-handle" id="tool-drawer-handle">
         <div class="tool-drawer-handle-bar"></div>
+        <div class="tool-drawer-label">Tools & Colors</div>
       </div>
       <div class="tool-drawer-content">
         <div class="tool-grid" id="tool-grid"></div>
@@ -46,6 +47,29 @@
   ns.ToolDrawerController.prototype.populateTools = function () {
     var toolGrid = document.getElementById('tool-grid');
     if (!toolGrid) return;
+    
+    // Add navigation section first
+    var navSection = document.createElement('div');
+    navSection.style.cssText = 'display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 16px; padding-bottom: 16px; border-bottom: 2px solid rgba(255,255,255,0.1);';
+    navSection.innerHTML = `
+      <button class="tool-item" style="min-height: 60px;" onclick="document.querySelector('.right-column')?.classList.toggle('show-mobile');">
+        <span class="icon" style="font-size: 24px;">🎬</span>
+        <span class="label" style="font-size: 10px;">Frames</span>
+      </button>
+      <button class="tool-item" style="min-height: 60px;" onclick="document.getElementById('advanced-layer-panel')?.classList.toggle('show-mobile');">
+        <span class="icon" style="font-size: 24px;">📚</span>
+        <span class="label" style="font-size: 10px;">Layers</span>
+      </button>
+      <button class="tool-item" style="min-height: 60px;" onclick="document.getElementById('animation-preview-panel')?.classList.toggle('show-mobile');">
+        <span class="icon" style="font-size: 24px;">▶️</span>
+        <span class="label" style="font-size: 10px;">Preview</span>
+      </button>
+      <button class="tool-item" style="min-height: 60px;" onclick="$.publish(Events.EXPORT_REQUEST);">
+        <span class="icon" style="font-size: 24px;">💾</span>
+        <span class="label" style="font-size: 10px;">Export</span>
+      </button>
+    `;
+    toolGrid.parentNode.insertBefore(navSection, toolGrid);
     
     var tools = [
       {id: 'tool-pen', icon: '✏️', label: 'Pen', title: 'Draw pixels'},
